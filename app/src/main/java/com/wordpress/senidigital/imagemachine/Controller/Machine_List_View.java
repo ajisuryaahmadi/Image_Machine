@@ -54,7 +54,6 @@ public class Machine_List_View extends BaseAdapter {
         TextView last_main = (TextView) convertView.findViewById(R.id.txt_lv_last_main);
 
         Data data = items.get(position);
-
         id.setText(data.getId());
         name.setText(data.getName());
         last_main.setText(data.getLast_Main());

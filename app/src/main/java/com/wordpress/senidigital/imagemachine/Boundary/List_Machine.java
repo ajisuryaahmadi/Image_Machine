@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wordpress.senidigital.imagemachine.Controller.Data;
@@ -32,7 +33,7 @@ public class List_Machine extends AppCompatActivity {
     List<Data> itemList = new ArrayList<Data>();
     Machine_List_View adapter;
     DbHelper SQLite = new DbHelper(this);
-
+    TextView text_empty;
     public static final String TAG_ID = "serial_number";
     public static final String TAG_NAME = "name";
     public static final String TAG_LAST_MAIN = "last_maintenance";
@@ -43,6 +44,7 @@ public class List_Machine extends AppCompatActivity {
         setContentView(R.layout.activity_list_machine);
         SQLite = new DbHelper(getApplicationContext());
         listView = (ListView)findViewById(R.id.lv_lm_list_machine);
+        text_empty = (TextView)findViewById(R.id.txt_lv_data_empty);
         adapter = new Machine_List_View(List_Machine.this, itemList);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -86,10 +88,12 @@ public class List_Machine extends AppCompatActivity {
                                 itemList.clear();
                                 getAllData(0);
                                 break;
+                            default:
+                                break;
                         }
                     }
                 }).show();
-                return false;
+                return true;
             }
         });
         new_machine = (Button)findViewById(R.id.btn_lm_new_machine);
@@ -132,78 +136,100 @@ public class List_Machine extends AppCompatActivity {
         itemList.clear();
         if(type==0){
             ArrayList<HashMap<String, String>> row = SQLite.getAllData();
-            for (int i = 0; i < row.size(); i++) {
-                String id = row.get(i).get(TAG_ID);
-                String poster = row.get(i).get(TAG_NAME);
-                String title = row.get(i).get(TAG_LAST_MAIN);
-
-                Data data = new Data();
-
-                data.setId(id);
-                data.setName(poster);
-                data.setLast_main(title);
-
-                itemList.add(data);
+            if(row.isEmpty()){
+                text_empty.setVisibility(View.VISIBLE);
+                listView.setVisibility(View.GONE);
             }
-            Toast.makeText(List_Machine.this, "ORDER By: Last Maintenance DESC", Toast.LENGTH_LONG).show();
-            adapter.notifyDataSetChanged();
+            else{
+                for (int i = 0; i < row.size(); i++) {
+                    String id = row.get(i).get(TAG_ID);
+                    String poster = row.get(i).get(TAG_NAME);
+                    String title = row.get(i).get(TAG_LAST_MAIN);
+
+                    Data data = new Data();
+                    data.setId(id);
+                    data.setName(poster);
+                    data.setLast_main(title);
+
+                    itemList.add(data);
+                }
+                Toast.makeText(List_Machine.this, "ORDER By: Last Maintenance DESC", Toast.LENGTH_LONG).show();
+                adapter.notifyDataSetChanged();
+                text_empty.setVisibility(View.GONE);
+                listView.setVisibility(View.VISIBLE);
+            }
         }
         else if(type==1){
             ArrayList<HashMap<String, String>> row = SQLite.getAllData_sort_asc_serial();
-
-            for (int i = 0; i < row.size(); i++) {
-                String id = row.get(i).get(TAG_ID);
-                String poster = row.get(i).get(TAG_NAME);
-                String title = row.get(i).get(TAG_LAST_MAIN);
-
-                Data data = new Data();
-
-                data.setId(id);
-                data.setName(poster);
-                data.setLast_main(title);
-
-                itemList.add(data);
+            if(row.isEmpty()){
+                text_empty.setVisibility(View.VISIBLE);
+                listView.setVisibility(View.GONE);
             }
-            Toast.makeText(List_Machine.this, "ORDER By: Last Serial ASC", Toast.LENGTH_LONG).show();
-            adapter.notifyDataSetChanged();
+            else{
+                for (int i = 0; i < row.size(); i++) {
+                    String id = row.get(i).get(TAG_ID);
+                    String poster = row.get(i).get(TAG_NAME);
+                    String title = row.get(i).get(TAG_LAST_MAIN);
+
+                    Data data = new Data();
+
+                    data.setId(id);
+                    data.setName(poster);
+                    data.setLast_main(title);
+
+                    itemList.add(data);
+                }
+                Toast.makeText(List_Machine.this, "ORDER By: Last Serial ASC", Toast.LENGTH_LONG).show();
+                adapter.notifyDataSetChanged();
+            }
         }
         else if(type==2){
             ArrayList<HashMap<String, String>> row = SQLite.getAllData_sort_desc_serial();
-
-            for (int i = 0; i < row.size(); i++) {
-                String id = row.get(i).get(TAG_ID);
-                String poster = row.get(i).get(TAG_NAME);
-                String title = row.get(i).get(TAG_LAST_MAIN);
-
-                Data data = new Data();
-
-                data.setId(id);
-                data.setName(poster);
-                data.setLast_main(title);
-
-                itemList.add(data);
+            if(row.isEmpty()){
+                text_empty.setVisibility(View.VISIBLE);
+                listView.setVisibility(View.GONE);
             }
-            Toast.makeText(List_Machine.this, "ORDER By: Last Serial DESC", Toast.LENGTH_LONG).show();
-            adapter.notifyDataSetChanged();
+            else{
+                for (int i = 0; i < row.size(); i++) {
+                    String id = row.get(i).get(TAG_ID);
+                    String poster = row.get(i).get(TAG_NAME);
+                    String title = row.get(i).get(TAG_LAST_MAIN);
+
+                    Data data = new Data();
+
+                    data.setId(id);
+                    data.setName(poster);
+                    data.setLast_main(title);
+
+                    itemList.add(data);
+                }
+                Toast.makeText(List_Machine.this, "ORDER By: Last Serial DESC", Toast.LENGTH_LONG).show();
+                adapter.notifyDataSetChanged();
+            }
         }
         else{
             ArrayList<HashMap<String, String>> row = SQLite.getAllData_sort_asc_date();
-
-            for (int i = 0; i < row.size(); i++) {
-                String id = row.get(i).get(TAG_ID);
-                String poster = row.get(i).get(TAG_NAME);
-                String title = row.get(i).get(TAG_LAST_MAIN);
-
-                Data data = new Data();
-
-                data.setId(id);
-                data.setName(poster);
-                data.setLast_main(title);
-
-                itemList.add(data);
+            if(row.isEmpty()){
+                text_empty.setVisibility(View.VISIBLE);
+                listView.setVisibility(View.GONE);
             }
-            Toast.makeText(List_Machine.this, "ORDER By: Last Maintenance ASC", Toast.LENGTH_LONG).show();
-            adapter.notifyDataSetChanged();
+            else{
+                for (int i = 0; i < row.size(); i++) {
+                    String id = row.get(i).get(TAG_ID);
+                    String poster = row.get(i).get(TAG_NAME);
+                    String title = row.get(i).get(TAG_LAST_MAIN);
+
+                    Data data = new Data();
+
+                    data.setId(id);
+                    data.setName(poster);
+                    data.setLast_main(title);
+
+                    itemList.add(data);
+                }
+                Toast.makeText(List_Machine.this, "ORDER By: Last Maintenance ASC", Toast.LENGTH_LONG).show();
+                adapter.notifyDataSetChanged();
+            }
         }
     }
 

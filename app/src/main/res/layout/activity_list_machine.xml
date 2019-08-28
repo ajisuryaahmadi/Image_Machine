@@ -38,6 +38,17 @@
             android:text="List Machine: "
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/txt_lv_data_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/txt_lv_name"
+            android:layout_alignRight="@+id/txt_lv_name"
+            android:layout_below="@+id/textView6"
+            android:text="No Data Found!"
+            android:textAlignment="center"
+            android:visibility="visible" />
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -45,12 +56,14 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginTop="5dp"
-            android:fillViewport="true">
+            android:fillViewport="true"
+            android:visibility="visible">
 
             <ListView
                 android:id="@+id/lv_lm_list_machine"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:visibility="visible" />
         </ScrollView>
 
     </LinearLayout>

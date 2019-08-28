@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.wordpress.senidigital.imagemachine">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -19,16 +20,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Boundary.List_Machine" />
-        <activity android:name=".Boundary.Machine_Spesification" />
-        <activity android:name=".Boundary.Machine_Data" />
-        <activity android:name=".Controller.Machine_List_View" />
-        <activity android:name=".Boundary.View_Machine" />
+        <activity android:name=".Boundary.List_Machine"
+            android:label="List Machine">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Boundary.Home" />
+        </activity>
+
+        <activity android:name=".Boundary.Machine_Data"
+            android:label="Data Machine">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Boundary.Home" />
+        </activity>
+        <activity android:name=".Boundary.View_Machine"
+            android:label="Info Akun">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Boundary.Home" />
+        </activity>
         <activity
-            android:name=".Boundary.ImageFullScreen"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_image_full_screen"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation">
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Boundary.Home" />
+        </activity>
     </application>
 
 </manifest>

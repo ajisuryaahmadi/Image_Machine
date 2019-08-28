@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,9 +14,13 @@
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_editor_absoluteY="28dp">
 
-        <LinearLayout
-            android:layout_width="368dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:filterTouchesWhenObscured="true"
             android:orientation="vertical"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -27,22 +31,19 @@
                 android:id="@+id/et_vm_image_machine"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
                 android:adjustViewBounds="true"
-                android:contentDescription="TODO"
+                android:contentDescription="Image Of Machine"
+                android:cropToPadding="true"
                 android:maxHeight="200dp"
                 android:maxWidth="200dp"
                 android:paddingBottom="5dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:paddingTop="5dp"
-                android:scaleType="fitXY"
+                android:paddingTop="10dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/ic_launcher_background" />
 
             <TextView
@@ -99,148 +100,131 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/textView3"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/textView3"
                 android:layout_below="@+id/lbl_im_info"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:text="Serial Number :" />
+                android:layout_marginTop="10dp"
+                android:text="Serial Number       :" />
 
             <TextView
                 android:id="@+id/txt_vm_serial"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/textView4"
+                android:layout_alignEnd="@+id/txt_vm_name"
                 android:layout_alignLeft="@+id/txt_vm_name"
+                android:layout_alignRight="@+id/txt_vm_name"
                 android:layout_alignStart="@+id/txt_vm_name"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_alignTop="@+id/textView4"
                 android:autoText="false"
                 android:text="-"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/textView4"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_alignLeft="@+id/textView4"
+                android:layout_alignStart="@+id/textView4"
+                android:layout_below="@+id/txt_vm_serial"
                 android:layout_marginTop="5dp"
                 android:layout_toLeftOf="@+id/txt_vm_name"
                 android:layout_toStartOf="@+id/txt_vm_name"
-                android:text="Name                :" />
+                android:text="Name                     :" />
 
             <TextView
                 android:id="@+id/txt_vm_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/textView8"
-                android:layout_marginBottom="5dp"
+                android:layout_above="@+id/textView10"
+                android:layout_below="@+id/txt_vm_serial"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
                 android:layout_toEndOf="@+id/textView4"
                 android:layout_toRightOf="@+id/textView4"
                 android:text="-"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
+                android:layout_alignLeft="@+id/textView8"
+                android:layout_alignStart="@+id/textView8"
                 android:layout_below="@+id/textView8"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_toLeftOf="@+id/txt_vm_name"
                 android:layout_toStartOf="@+id/txt_vm_name"
-                android:text="Detail Info        :" />
+                android:text="Detail                      :" />
 
             <TextView
                 android:id="@+id/txt_vm_spec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/textView10"
                 android:layout_alignBottom="@+id/textView10"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
+                android:layout_alignLeft="@+id/txt_vm_name"
+                android:layout_alignStart="@+id/txt_vm_name"
+                android:layout_alignTop="@+id/textView10"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@+id/textView10"
-                android:layout_toRightOf="@+id/textView10"
                 android:text="-"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/txt_vm_spec"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_alignLeft="@+id/lbl_im_info"
+                android:layout_alignStart="@+id/lbl_im_info"
+                android:layout_below="@+id/textView10"
                 android:layout_marginTop="5dp"
                 android:text="Last Maintenance :" />
 
             <TextView
                 android:id="@+id/txt_vm_last_main"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView3"
-                android:layout_alignStart="@+id/textView3"
-                android:layout_below="@+id/textView3"
+                android:layout_alignBaseline="@+id/textView3"
+                android:layout_alignBottom="@+id/textView3"
+                android:layout_alignEnd="@+id/txt_vm_spec"
+                android:layout_alignLeft="@+id/txt_vm_spec"
+                android:layout_alignRight="@+id/txt_vm_spec"
+                android:layout_alignStart="@+id/txt_vm_spec"
                 android:text="24/01/1997"
-                android:textAlignment="center"
-                android:textSize="18sp"
+                android:textAlignment="viewStart"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <TableLayout
-                android:id="@+id/tableLayout"
+            <Button
+                android:id="@+id/btn_vm_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/txt_vm_last_main"
-                android:layout_alignStart="@+id/txt_vm_last_main"
-                android:layout_below="@+id/txt_vm_last_main"
-                android:layout_marginTop="5dp">
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView3"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Edit" />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignEnd="@+id/tableLayout"
-                    android:layout_alignRight="@+id/tableLayout"
-                    android:layout_below="@+id/tableLayout"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center">
-
-                    <Button
-                        android:id="@+id/btn_vm_edit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Edit" />
-
-                    <Button
-                        android:id="@+id/btn_vm_delete"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Delete" />
-                </TableRow>
-            </TableLayout>
-        </LinearLayout>
+            <Button
+                android:id="@+id/btn_vm_delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_vm_edit"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:elevation="0dp"
+                android:text="Delete" />
+        </RelativeLayout>
     </ScrollView>
-</android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>

@@ -43,17 +43,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         Toast.makeText(Home.this, "Scan Code Starting!", Toast.LENGTH_LONG).show();
     }
 
-    @Override
-    public void onClick(View view) {
-        qrScan.initiateScan();
-    }
+
     //scan kodeQR
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
-            //if qraji                          code has nothing in it
-            String[] separated = result.getContents().toString().split(";");
             if (result.getContents() == null) {
                 Toast.makeText(this, "Result Not Found", Toast.LENGTH_LONG).show();
             }else{
@@ -71,4 +66,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         startActivity(cek_data);
         finish();
     }
+
+    @Override
+    public void onClick(View v) {
+        qrScan.setPrompt("Scan a barcode");
+        qrScan.setOrientationLocked(false);
+        qrScan.initiateScan();
+    }
+
 }
