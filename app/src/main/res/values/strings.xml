@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Image Machine</string>
+
+    <string name="title_activity_image_full_screen">ImageFullScreen</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>
